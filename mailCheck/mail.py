@@ -6,19 +6,19 @@ from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
 msg = MIMEMultipart()
-msg['From'] = 'faycal.anoar.cherkaoui@gmail.com'
-msg['TO'] = 'faycal.anoar.cherkaoui@gmail.com'
+msg['From'] = 'icinga.smtp.alert@gmail.com'
+msg['TO'] = 'icinga.smtp.mail@gmail.com'
 msg['SUbject'] = 'Just smth'
 message = 'Bonjour'
 
-
+print msg['From']
 msg.attach(MIMEText(message))
 
 mailserver = smtplib.SMTP('smtp.gmail.com',587)
 mailserver.ehlo()
 mailserver.starttls()
 mailserver.ehlo()
-mailserver.login('faycal.anoar.cherkaoui@gmail.com','Anoar-753')
-mailserver.sendmail('faycal.anoar.cherkaoui@gmail.com','faycal.anoar.cherkaoui@gmail.com',msg.as_string())
+mailserver.login(msg['From'],'AZqswx1234')
+mailserver.sendmail(msg['From'],msg['To'],msg.as_string())
 mailserver.quit()
 
