@@ -35,9 +35,14 @@ print "Request URL: " + str(r.url)
 print "Status code: " + str(r.status_code)
 print "hello"
 if(r.status_code == 200):
-    print "Result: " + json.dumps(r.json())
+    
     message = json.dumps(r.json())
-    msg.attach(MIMEText(message))
+    print "Result: " + message
+    print
+    message = json.loads(message)
+    json_result = message["results"][0]["type"]
+    print "My valluee" +  str(json_result)
+    msg.attach(MIMEText(json_result))
 
     print 'Connecting to SMTP serveri...'
     mailserver = smtplib.SMTP('smtp.gmail.com',587)
